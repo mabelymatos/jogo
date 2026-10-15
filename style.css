@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+--background: #090b20;
+--panel: #151a38;
+--purple: #9365ff;
+--pink: #ff70c5;
+--cyan: #55e7ff;
+--yellow: #ffdc70;
+--white: #f6f4ff;
+--muted: #b6bad9;
+}
+
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+min-height: 100vh;
+font-family: 'Nunito', sans-serif;
+color: var(--white);
+background:
+radial-gradient(ellipse at 15% 15%, #28205c 0, transparent 35%),
+radial-gradient(ellipse at 85% 55%, #19265b 0, transparent 35%),
+var(--background);
+overflow-x: hidden;
+}
+
+.stars {
+position: fixed;
+inset: 0;
+pointer-events: none;
+opacity: .55;
+background-image:
+radial-gradient(2px 2px at 20px 30px, white 99%, transparent),
+radial-gradient(2px 2px at 100px 120px, #55e7ff 99%, transparent),
+radial-gradient(1px 1px at 170px 70px, white 99%, transparent);
+background-size: 200px 180px;
+z-index: -1;
+}
+
+header {
+text-align: center;
+padding: 32px 16px 22px;
+}
+
+.logo {
+font-size: clamp(1.3rem, 4vw, 2.2rem);
+font-weight: 900;
+letter-spacing: 1px;
+color: var(--cyan);
+text-shadow: 0 0 22px #55e7ff55;
+}
+
+header p {
+color: var(--muted);
+margin: 8px 0 0;
+}
+
+main {
+width: min(950px, 94%);
+margin: auto;
+padding-bottom: 30px;
+}
+
+.dashboard {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 12px;
+margin-bottom: 16px;
+}
+
+.stat, .game-card, .quiz-card {
+background: #151a38ed;
+border: 1px solid #ffffff16;
+border-radius: 20px;
+box-shadow: 0 12px 35px #00000022;
+}
+
+.stat {
+padding: 14px;
+text-align: center;
+}
+
+.stat span, .stat strong {
+display: block;
+}
+
+.stat span {
+color: var(--muted);
+font-size: .85rem;
+}
+
+.stat strong {
+margin-top: 4px;
+font-size: 1.5rem;
+color: var(--yellow);
+}
+
+.game-card, .quiz-card {
+padding: clamp(16px, 4vw, 28px);
+}
+
+.game-heading {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+margin-bottom: 20px;
+}
+
+h2 {
+margin: 0 0 6px;
+}
+
+.game-heading h2 {
+font-size: clamp(1rem, 3vw, 1.4rem);
+}
+
+.game-heading p {
+color: var(--muted);
+margin: 0;
+font-size: .9rem;
+}
+
+.badge {
+flex-shrink: 0;
+padding: 7px 10px;
+border-radius: 20px;
+background: #2b2452;
+color: var(--cyan);
+font-size: .7rem;
+font-weight: 900;
+}
+
+#maze {
+display: grid;
+grid-template-columns: repeat(12, minmax(0, 1fr));
+gap: 4px;
+max-width: 590px;
+margin: 0 auto;
+padding: 10px;
+background: #080d25;
+border: 1px solid #ffffff15;
+border-radius: 15px;
+}
+
+.cell {
+aspect-ratio: 1;
+min-width: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 5px;
+font-size: clamp(.7rem, 2.5vw, 1.4rem);
+transition: background .2s, transform .2s;
+}
+
+.wall {
+background: linear-gradient(145deg, #484178, #28254e);
+border: 1px solid #a99aff20;
+}
+
+.path {
+background: #171d3b;
+border: 1px solid #ffffff08;
+}
+
+.player {
+background: #6647d9;
+box-shadow: 0 0 15px #9365ff;
+animation: float 1.5s ease-in-out infinite;
+}
+
+.portal {
+background: #452c66;
+border: 1px solid var(--pink);
+box-shadow: inset 0 0 10px #ff70c544;
+}
+
+.portal.done {
+background: #174d55;
+border-color: var(--cyan);
+}
+
+.exit {
+background: #55401b;
+border: 1px solid var(--yellow);
+}
+
+@keyframes float {
+50% { transform: translateY(-3px); }
+}
+
+.instructions {
+text-align: center;
+color: var(--muted);
+font-size: .85rem;
+line-height: 1.7;
+margin: 20px auto;
+}
+
+button {
+font: inherit;
+cursor: pointer;
+border: 0;
+border-radius: 12px;
+padding: 12px 17px;
+color: white;
+font-weight: 800;
+transition: transform .15s, filter .15s;
+}
+
+button:hover {
+filter: brightness(1.12);
+transform: translateY(-2px);
+}
+
+button:focus-visible {
+outline: 3px solid var(--cyan);
+outline-offset: 3px;
+}
+
+.primary {
+background: linear-gradient(110deg, #8658ff, #c05ce9);
+}
+
+.secondary {
+background: #272d50;
+border: 1px solid #ffffff20;
+}
+
+#restart {
+display: block;
+margin: 0 auto;
+}
+
+.mobile-controls {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 6px;
+margin-bottom: 20px;
+}
+
+.mobile-controls div {
+display: flex;
+gap: 6px;
+}
+
+.mobile-controls button {
+width: 48px;
+height: 44px;
+padding: 0;
+background: #30285e;
+border: 1px solid #ffffff22;
+}
+
+.quiz-card {
+margin-top: 18px;
+border-color: #9365ff66;
+}
+
+.quiz-top {
+display: flex;
+justify-content: space-between;
+gap: 10px;
+flex-wrap: wrap;
+font-size: .8rem;
+font-weight: 900;
+color: var(--cyan);
+margin-bottom: 18px;
+}
+
+#question {
+font-size: clamp(1.1rem, 3vw, 1.5rem);
+line-height: 1.5;
+margin-bottom: 20px;
+}
+
+.answers {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 10px;
+}
+
+.answer {
+min-height: 58px;
+text-align: left;
+background: #24294d;
+border: 1px solid #ffffff1a;
+line-height: 1.4;
+}
+
+.answer.correct {
+background: #14654f;
+border-color: #63f2ba;
+}
+
+.answer.wrong {
+background: #702f50;
+border-color: #ff80b5;
+}
+
+.answer:disabled {
+cursor: default;
+opacity: .9;
+}
+
+#feedback {
+min-height: 24px;
+font-weight: 800;
+}
+
+.hint-text {
+color: var(--yellow);
+background: #45391d;
+padding: 12px;
+border-radius: 10px;
+}
+
+.quiz-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+align-items: center;
+}
+
+.hidden {
+display: none !important;
+}
+
+.victory {
+text-align: center;
+}
+
+.trophy {
+font-size: 4rem;
+margin-bottom: 10px;
+}
+
+.victory p {
+color: var(--muted);
+line-height: 1.7;
+}
+
+.final-score {
+margin: 20px auto;
+padding: 20px;
+border-radius: 15px;
+background: #24294d;
+}
+
+.final-score span, .final-score strong {
+display: block;
+}
+
+.final-score strong {
+color: var(--yellow);
+font-size: 2.5rem;
+}
+
+footer {
+text-align: center;
+padding: 15px;
+color: var(--muted);
+font-size: .8rem;
+}
+
+@media (max-width: 500px) {
+.dashboard {
+gap: 6px;
+}
+
+.stat {
+padding: 10px 4px;
+}
+
+.stat span {
+font-size: .72rem;
+}
+
+.game-heading {
+align-items: flex-start;
+}
+
+.badge {
+font-size: .6rem;
+}
+
+#maze {
+gap: 3px;
+padding: 6px;
+}
+
+.answers {
+grid-template-columns: 1fr;
+}
+}
